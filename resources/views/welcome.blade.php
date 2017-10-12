@@ -1,95 +1,57 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+      <title>DnD Name Generator</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- <link rel="stylesheet" href="<?php echo asset('css/welcome.css')?>"; -->
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <h1>DnD Name Generator</h1>
+    </div>
+    <div class="row">
+      <button id="show" class="btn btn-primary">I want a personalized name</button>
+      <button class="btn btn-primary">I want a random name</button>
+    </div>
+    <div id="personalized" class="row">
+       <form method="POST">
+        <div class="form-group">
+          <label>What is your first name?</label>
+          <input type="text" name="firstname" class="form-control" value='' required>
         </div>
-    </body>
+        <div class="form-group">
+          <label>What is your last name?</label>
+          <input type="text" name="lastname" class="form-control" value='' required>
+        </div>
+        <div class="form-group">
+          <label>What race is your character?</label>
+          <select size="4" class="form-control" name="charrace">
+            <option value="elf">Elf</option>
+            <option value="dwarf">Dwarf</option>
+            <option value="human">Human</option>
+            <option value="orc">Orc</option>
+          </select>
+        </div>
+        <button type="submit" name='submit' class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $("#personalized").hide();
+    $("#show").click(function(){
+      $("#personalized").show();
+      });
+  });
+  </script>
+</body>
 </html>

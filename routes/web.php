@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
+
+Route::POST('/generate/', 'GenerateNameController@index');
+
+Route::GET('/generate/random', 'GenerateNameController@random');
