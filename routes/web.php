@@ -11,8 +11,15 @@
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'generator');
 
 Route::POST('/generate/', 'GenerateNameController@index');
 
 Route::GET('/generate/random', 'GenerateNameController@random');
+
+Route::get('/env', function () {
+    dump(config('app.name'));
+    dump(config('app.env'));
+    dump(config('app.debug'));
+    dump(config('app.url'));
+});

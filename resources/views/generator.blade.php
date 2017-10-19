@@ -1,16 +1,6 @@
-<!doctype html>
-<html>
-    <head>
-      <title>DnD Name Generator</title>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- <link rel="stylesheet" href="<?php echo asset('css/welcome.css')?>"; -->
-      <!-- Bootstrap -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    </head>
-    <body>
+@extends('layouts.master')
 
+@section('content')
   <div class="container">
     <div class="row">
       <h1>DnD Name Generator</h1>
@@ -42,9 +32,7 @@
       </form>
     </div>
   </div>
-
-  <!-- Jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  @push('javascript')
   <script>
   $(document).ready(function() {
     $("#personalized").hide();
@@ -53,5 +41,6 @@
       });
   });
   </script>
-</body>
-</html>
+  @endpush
+
+@endsection

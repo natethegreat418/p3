@@ -9,12 +9,18 @@ class GenerateNameController extends Controller
     //
     public function index($firstname, $lastname, $charrace)
     {
-      return 'Your personalized character name is...';
+      $charname = 'Not Random';
+      return view('results')->with([
+        'name' => $charname
+      ]);
     }
 
     public function random()
     {
-      return 'A totally random name is..';
+      $charname = 'Random';
+      return view('results')->with([
+        'name' => $charname
+      ]);
     }
 
 }
