@@ -7,10 +7,14 @@
     </div>
     <div class="row">
       <button id="show" class="btn btn-primary">I want a personalized name</button>
-      <button class="btn btn-primary">I want a random name</button>
+      <form method="GET" action="/generate/random">
+        <button class="btn btn-primary">I want a random name</button>
+      </form>
     </div>
     <div id="personalized" class="row">
-       <form method="POST">
+       <form method="POST" action="/generate">
+         {{ csrf_field() }}
+
         <div class="form-group">
           <label>What is your first name?</label>
           <input type="text" name="firstname" class="form-control" value='' required>
