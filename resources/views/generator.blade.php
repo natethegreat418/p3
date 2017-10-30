@@ -8,7 +8,7 @@
   <div class="row">
     <button id="show" class="btn btn-primary">I want a personalized name</button>
     <form method="GET" action="/generate/random">
-      <button class="btn btn-primary">I want a random name</button>
+      <button class="btn btn-primary">I'm feeling lucky</button>
     </form>
   </div>
   <div id="personalized" class="row">
@@ -24,12 +24,18 @@
         <input type="text" name="lastname" class="form-control" value='' required>
       </div>
       <div class="form-group">
+        <label>What gender does your character identify as?</label>
+        <select size="2" class="form-control" name="chargender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label>What race is your character?</label>
-        <select size="4" class="form-control" name="charrace" required>
+        <select size="3" class="form-control" name="charrace" required>
           <option value="elf">Elf</option>
           <option value="dwarf">Dwarf</option>
           <option value="human">Human</option>
-          <option value="orc">Orc</option>
         </select>
       </div>
       <button type="submit" name='submit' class="btn btn-primary">Submit</button>

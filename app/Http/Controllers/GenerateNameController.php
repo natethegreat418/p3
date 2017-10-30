@@ -7,25 +7,46 @@ use Illuminate\Http\Request;
 class GenerateNameController extends Controller
 {
     //
-    public function index()
-    {
-      return view('results')->with([
-        'name' => session('name')
-      ]);
-    }
-
     public function store(Request $request)
     {
       $this->validate($request, [
         'firstname' => 'required',
         'lastname' => 'required',
-        'charrace' => 'required'
+        'charrace' => 'required',
+        'chargender' => 'required'
       ]);
-      dump($request);
+
+      $inputname = $request->input('firstname') . ' ' . $request->input('lastname');
+      $inputrace = $request->input('charrace');
+      $inputgender = $request->input('chargender');
+
+      $namejson = file_get_contents(base_path().'/database/characters.json');
+      $namearray = json_decode($namejson, true);
+      $relevantnames = [];
+
+      foreach ($namearray as $entry) {
+        if($entry['race'] == $inputrace) {
+          array_push($relevantnames, $entry);
+        }
+      }
+
       $charname = 'Not Random';
-      // return redirect('/generate/personalized')->with([
-      //   'name' => $charname
-      // ]);
+      return redirect('/generate/personalized')->with([
+        'inputname' => $inputname,
+        'inputrace' => $inputrace,
+        'inputgender' => $inputgender,
+        'charname' => $charname
+      ]);
+    }
+
+    public function index()
+    {
+      return view('results')->with([
+        'charname' => session('charname'),
+        'inputname' => session('inputname'),
+        'inputrace' => session('inputrace'),
+        'inputgender' => session('inputgender')
+      ]);
     }
 
     public function random(Request $request)
@@ -37,7 +58,7 @@ class GenerateNameController extends Controller
       $lastname = $namearray[$rand_keys[1]]['lastname'];
       $charname = $firstname . ' ' . $lastname;
       return view('results')->with([
-        'name' => $charname
+        'charname' => $charname
       ]);
     }
 
