@@ -1,319 +1,319 @@
 [
  {
    "firstname": "Abdul-Samad",
-   "lastname": "Siraj",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Adad",
-   "lastname": "Al'Aziz",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Adotiln",
-   "lastname": "Darkeyes",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Aebn",
-   "lastname": "il'Soladris",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Aelthas",
-   "lastname": "Daelsur",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Aeric",
-   "lastname": "Bannier",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Akai",
-   "lastname": "Miso",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Akodo",
-   "lastname": "Jubei",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Alaois",
-   "lastname": "Froast",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Albiron",
-   "lastname": "Dethir",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Aldain",
-   "lastname": "Truesteel",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Alexander",
-   "lastname": "M'lar",
+   "gender": "male",
+   "universe": "random",
+   "race": "human"
+ },
+ {
+   "firstname": "Alfarr",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Alfonse",
-   "lastname": "Delarenzo",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Altair",
-   "lastname": "Theryn",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Anar",
-   "lastname": "Tovanni",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Andel",
-   "lastname": "Jerirad",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Andra",
-   "lastname": "Kelnorem",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Andras",
-   "lastname": "Ruthaer",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Ansley",
-   "lastname": "Greenshields",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Anthron",
-   "lastname": "Moore",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Apoca",
-   "lastname": "Nimgey",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Aram",
-   "lastname": "AlTarik",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Aramon",
-   "lastname": "Botan",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Ari",
-   "lastname": "Sloecolm",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Arich",
-   "lastname": "d'Agrione",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Arkham",
-   "lastname": "Magehold",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Arramis",
-   "lastname": "Donovan",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Artel",
-   "lastname": "Moliane",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Atavar",
-   "lastname": "Coramoor",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Atreios",
-   "lastname": "Helioforos",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Atreus",
-   "lastname": "Kynes",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Aylmer",
-   "lastname": "Filkins",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Balund",
-   "lastname": "Skullseer",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Barbatos",
-   "lastname": "Kem",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Barret",
-   "lastname": "Selmay",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Bartholomew",
-   "lastname": "Mar",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Bastian",
-   "lastname": "Sinuhe",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Baston",
-   "lastname": "Balmoral",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Baxian",
-   "lastname": "Jelrael",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Belarion",
-   "lastname": "Ulartson",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Belmondo",
-   "lastname": "Graff",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Bennoza",
-   "lastname": "Minnic",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Bernardo",
-   "lastname": "the Modest",
-   "universe": "random",
-   "race": "human"
- },
- {
-   "firstname": "Marneus",
-   "lastname": "the Cowardly",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Black",
-   "lastname": "Slade",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Blodderick",
-   "lastname": "theBold",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Brandt",
-   "lastname": "Avicenne",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Brendan",
-   "lastname": "Thorogood",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Brewie",
-   "lastname": "Dresden",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Briac",
-   "lastname": "Nomet",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Brill",
-   "lastname": "Hellivaqua",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Broderick",
-   "lastname": "Loy",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  },
  {
    "firstname": "Bron",
-   "lastname": "Traskitt",
+   "gender": "male",
    "universe": "random",
    "race": "human"
  }
