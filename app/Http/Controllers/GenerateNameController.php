@@ -83,13 +83,38 @@ class GenerateNameController extends Controller
         }
       }
 
+      // Pass appropriate img file
+      if ($inputrace === 'human' && $inputgender === 'male'){
+        $charimg = 'https://www.dandwiki.com/w/images/a/ad/Cyrus.jpg';
+      }
+      elseif($inputrace === 'human' && $inputgender === 'female'){
+        $charimg = 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/258/420/618/636271801914013762.png';
+      }
+      elseif($inputrace === 'elf' && $inputgender === 'male')
+      {
+        $charimg = 'http://www.mascotdesigngallery.com/wp/wp-content/uploads/2014/09/jimnelsonart.blogspot-elf-bard.jpg';
+      }
+      elseif($inputrace === 'elf' && $inputgender === 'female'){
+        $charimg = 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/7/639/420/618/636287075350739045.png';
+      }
+      elseif($inputrace === 'dwarf' && $inputgender === 'male')
+      {
+        $charimg = 'https://i.pinimg.com/originals/18/d2/6b/18d26b5ca8e7de4082be1ce23f16f840.png';
+      }
+      elseif($inputrace === 'dwarf' && $inputgender === 'female'){
+        $charimg = 'https://i.pinimg.com/736x/06/65/d9/0665d980a61b1014e530df9c8e65ed08--female-dwarf-players-handbook.jpg';
+      }
+
+
       // Best name match found, hit redirect
       $charname = $best_fname . ' ' . $best_lname;
+
       return redirect('/generate/personalized')->with([
         'inputname' => $inputname,
         'inputrace' => $inputrace,
         'inputgender' => $inputgender,
-        'charname' => $charname
+        'charname' => $charname,
+        'returnimg' => $charimg
       ]);
     }
 
@@ -100,7 +125,8 @@ class GenerateNameController extends Controller
         'charname' => session('charname'),
         'inputname' => session('inputname'),
         'inputrace' => session('inputrace'),
-        'inputgender' => session('inputgender')
+        'inputgender' => session('inputgender'),
+        'returnimg' => session('returnimg')
       ]);
     }
 

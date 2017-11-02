@@ -312,6 +312,36 @@
    "race": "human"
  },
  {
+   "lastname": "McGeeoia",
+   "gender": "female",
+   "universe": "random",
+   "race": "human"
+ },
+ {
+   "lastname": "McGeeoia",
+   "gender": "male",
+   "universe": "random",
+   "race": "elf"
+ },
+ {
+   "lastname": "McGeeoia",
+   "gender": "female",
+   "universe": "random",
+   "race": "elf"
+ },
+ {
+   "lastname": "McGeeoia",
+   "gender": "male",
+   "universe": "random",
+   "race": "dwarf"
+ },
+ {
+   "lastname": "McGeeoia",
+   "gender": "female",
+   "universe": "random",
+   "race": "dwarf"
+ },
+ {
    "lastname": "Traskitt",
    "gender": "male",
    "universe": "random",

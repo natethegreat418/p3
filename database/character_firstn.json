@@ -312,6 +312,36 @@
    "race": "human"
  },
  {
+   "firstname": "Babs",
+   "gender": "female",
+   "universe": "random",
+   "race": "human"
+ },
+ {
+   "firstname": "Elfya",
+   "gender": "male",
+   "universe": "random",
+   "race": "elf"
+ },
+ {
+   "firstname": "Elfya",
+   "gender": "female",
+   "universe": "random",
+   "race": "elf"
+ },
+ {
+   "firstname": "Dwarfya",
+   "gender": "male",
+   "universe": "random",
+   "race": "dwarf"
+ },
+ {
+   "firstname": "Dwarfya",
+   "gender": "female",
+   "universe": "random",
+   "race": "dwarf"
+ },
+ {
    "firstname": "Bron",
    "gender": "male",
    "universe": "random",
