@@ -5,6 +5,15 @@
   <div class="row">
     <h1>DnD Name Generator</h1>
   </div>
+    @if(count($errors) > 0)
+    <div class="row col-sm-3 errors">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
   <div class="row">
     <button id="show" class="btn btn-primary">I want a personalized name</button>
     <form method="GET" action="/generate/random">
@@ -41,19 +50,6 @@
       <button type="submit" name='submit' class="btn btn-primary">Submit</button>
     </form>
   </div>
-
-  @push('errors')
-    @if(count($errors) > 0)
-    <div class="row">
-      <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-    </div>
-    @endif
-  @endpush
-
 </div>
 
 @push('javascript')
