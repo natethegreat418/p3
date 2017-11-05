@@ -1,4 +1,11 @@
 .errors {
   list-style-type: none;
   background-color: #ff9999;
+  padding: .5em;
+  margin: 1em;
+}
+
+.resultsimg {
+  max-width: 100%;
+  max-height: 100%;
 }

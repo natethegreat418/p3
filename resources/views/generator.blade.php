@@ -6,7 +6,7 @@
     <h1>DnD Name Generator</h1>
   </div>
     @if(count($errors) > 0)
-    <div class="row col-sm-3 errors">
+    <div class="row col-sm-6s errors">
       <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -17,7 +17,7 @@
   <div class="row">
     <button id="show" class="btn btn-primary">I want a personalized name</button>
     <form method="GET" action="/generate/random">
-      <button class="btn btn-primary">I'm feeling lucky</button>
+      <button class="btn btn-secondary">Inspire me.</button>
     </form>
   </div>
   <div id="personalized" class="row">
@@ -34,10 +34,12 @@
       </div>
       <div class="form-group">
         <label>What gender does your character identify as?</label>
-        <select size="2" class="form-control" name="chargender" required>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
+        <div class="radio">
+          <label><input type="radio" name="chargender" value="male" required>Male</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="chargender" value="female" required>Female</label>
+        </div>
       </div>
       <div class="form-group">
         <label>What race is your character?</label>
@@ -47,7 +49,7 @@
           <option value="human">Human</option>
         </select>
       </div>
-      <button type="submit" name='submit' class="btn btn-primary">Submit</button>
+      <button type="submit" name='submit' class="btn btn-success">Submit</button>
     </form>
   </div>
 </div>
