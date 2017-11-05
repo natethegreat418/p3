@@ -49,6 +49,7 @@ class GenerateNameController extends Controller
       $splitfname = str_split($inputfname);
       $best_fname_rank = 0;
       $best_fname;
+      $rankedfirstnames = [];
       foreach ($relevantfirstnames as $entry) {
         $entry['rank'] = 0;
         $splitrname = str_split($entry['firstname']);
@@ -58,16 +59,23 @@ class GenerateNameController extends Controller
             $entry['rank'] = ($entry['rank']) + 1;
           }
         }
+
         if($entry['rank'] > $best_fname_rank){
           $best_fname_rank = $entry['rank'];
           $best_fname = $entry['firstname'];
         }
+        array_push($rankedfirstnames, $entry);
       }
+
+      $rankedfirstnames = array_values(array_sort($rankedfirstnames, function ($value) {
+        return $value['rank'];
+      }));
 
       // Determine best match for lastname
       $splitlname = str_split($inputlname);
       $best_lname_rank = 0;
       $best_lname;
+      $rankedlastnames = [];
       foreach ($relevantlastnames as $entry) {
         $entry['rank'] = 0;
         $splitrname = str_split($entry['lastname']);
@@ -81,6 +89,19 @@ class GenerateNameController extends Controller
           $best_lname_rank = $entry['rank'];
           $best_lname = $entry['lastname'];
         }
+        // Add new list for ranking
+        array_push($rankedlastnames, $entry);
+      }
+
+      // Sort names by rank
+      $rankedlastnames = array_values(array_sort($rankedlastnames, function ($value) {
+        return $value['rank'];
+      }));
+
+      // Ensure best matches were found, if not return form and error
+      if (isset($best_fname) == False || isset($best_lname) == False){
+        $my_errors = 'Unfortunately, a match could not be made. Please try again with a different name/race combination, or request a random name.';
+        return redirect('/')->withErrors($my_errors);
       }
 
       // Pass appropriate img file
@@ -105,7 +126,6 @@ class GenerateNameController extends Controller
         $charimg = 'https://i.pinimg.com/736x/06/65/d9/0665d980a61b1014e530df9c8e65ed08--female-dwarf-players-handbook.jpg';
       }
 
-
       // Best name match found, hit redirect
       $charname = $best_fname . ' ' . $best_lname;
 
@@ -114,7 +134,9 @@ class GenerateNameController extends Controller
         'inputrace' => $inputrace,
         'inputgender' => $inputgender,
         'charname' => $charname,
-        'returnimg' => $charimg
+        'returnimg' => $charimg,
+        'ranked_fnamelist'=> $rankedfirstnames,
+        'ranked_lnamelist'=> $rankedlastnames,
       ]);
     }
 
@@ -126,7 +148,9 @@ class GenerateNameController extends Controller
         'inputname' => session('inputname'),
         'inputrace' => session('inputrace'),
         'inputgender' => session('inputgender'),
-        'returnimg' => session('returnimg')
+        'returnimg' => session('returnimg'),
+        'ranked_fnamelist' => session('ranked_fnamelist'),
+        'ranked_lnamelist' => session('ranked_lnamelist')
       ]);
     }
 
