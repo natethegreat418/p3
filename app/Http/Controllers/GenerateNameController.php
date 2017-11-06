@@ -109,24 +109,30 @@ class GenerateNameController extends Controller
 
       // Select appropriate img file
       if ($inputrace === 'Human' && $inputgender === 'Male'){
-        $charimg = 'https://www.dandwiki.com/w/images/a/ad/Cyrus.jpg';
+        //https://www.dandwiki.com/w/images/a/ad/Cyrus.jpg
+        $charimg = 'human m-min.jpg';
       }
       elseif($inputrace === 'Human' && $inputgender === 'Female'){
-        $charimg = 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/258/420/618/636271801914013762.png';
+        //https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/258/420/618/636271801914013762.png
+        $charimg = 'human f-min.png';
       }
       elseif($inputrace === 'Elf' && $inputgender === 'Male')
       {
-        $charimg = 'http://www.mascotdesigngallery.com/wp/wp-content/uploads/2014/09/jimnelsonart.blogspot-elf-bard.jpg';
+        //http://www.mascotdesigngallery.com/wp/wp-content/uploads/2014/09/jimnelsonart.blogspot-elf-bard.jpg
+        $charimg = 'elf m-min.jpg';
       }
       elseif($inputrace === 'Elf' && $inputgender === 'Female'){
-        $charimg = 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/7/639/420/618/636287075350739045.png';
+        //https://media-waterdeep.cursecdn.com/avatars/thumbnails/7/639/420/618/636287075350739045.png
+        $charimg = 'elf f-min.png';
       }
-      elseif($inputrace === 'Dwarf' && $inputgender === 'Male')
+      elseif($randomrace === 'Dwarf' && $randomgender === 'Male')
       {
-        $charimg = 'https://i.pinimg.com/originals/18/d2/6b/18d26b5ca8e7de4082be1ce23f16f840.png';
+        //https://i.pinimg.com/originals/18/d2/6b/18d26b5ca8e7de4082be1ce23f16f840.png
+        $charimg = 'dwarf m-min.png';
       }
-      elseif($inputrace === 'Dwarf' && $inputgender === 'Female'){
-        $charimg = 'https://i.pinimg.com/736x/06/65/d9/0665d980a61b1014e530df9c8e65ed08--female-dwarf-players-handbook.jpg';
+      elseif($randomrace === 'Dwarf' && $randomgender === 'Female'){
+        //https://i.pinimg.com/736x/06/65/d9/0665d980a61b1014e530df9c8e65ed08--female-dwarf-players-handbook.jpg
+        $charimg = 'dwarf f-min.jpg';
       }
 
       // Best name match found, hit redirect
@@ -219,24 +225,30 @@ class GenerateNameController extends Controller
 
       // Select appropriate img file
       if ($randomrace === 'Human' && $randomgender === 'Male'){
-        $charimg = 'https://www.dandwiki.com/w/images/a/ad/Cyrus.jpg';
+        //https://www.dandwiki.com/w/images/a/ad/Cyrus.jpg
+        $charimg = 'human m-min.jpg';
       }
       elseif($randomrace === 'Human' && $randomgender === 'Female'){
-        $charimg = 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/258/420/618/636271801914013762.png';
+        //https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/258/420/618/636271801914013762.png
+        $charimg = 'human f-min.png';
       }
       elseif($randomrace === 'Elf' && $randomgender === 'Male')
       {
-        $charimg = 'http://www.mascotdesigngallery.com/wp/wp-content/uploads/2014/09/jimnelsonart.blogspot-elf-bard.jpg';
+        //http://www.mascotdesigngallery.com/wp/wp-content/uploads/2014/09/jimnelsonart.blogspot-elf-bard.jpg
+        $charimg = 'elf m-min.jpg';
       }
       elseif($randomrace === 'Elf' && $randomgender === 'Female'){
-        $charimg = 'https://media-waterdeep.cursecdn.com/avatars/thumbnails/7/639/420/618/636287075350739045.png';
+        //https://media-waterdeep.cursecdn.com/avatars/thumbnails/7/639/420/618/636287075350739045.png
+        $charimg = 'elf f-min.png';
       }
       elseif($randomrace === 'Dwarf' && $randomgender === 'Male')
       {
-        $charimg = 'https://i.pinimg.com/originals/18/d2/6b/18d26b5ca8e7de4082be1ce23f16f840.png';
+        //https://i.pinimg.com/originals/18/d2/6b/18d26b5ca8e7de4082be1ce23f16f840.png
+        $charimg = 'dwarf m-min.png';
       }
       elseif($randomrace === 'Dwarf' && $randomgender === 'Female'){
-        $charimg = 'https://i.pinimg.com/736x/06/65/d9/0665d980a61b1014e530df9c8e65ed08--female-dwarf-players-handbook.jpg';
+        //https://i.pinimg.com/736x/06/65/d9/0665d980a61b1014e530df9c8e65ed08--female-dwarf-players-handbook.jpg
+        $charimg = 'dwarf f-min.jpg';
       }
 
       return view('results')->with([

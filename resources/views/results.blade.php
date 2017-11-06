@@ -19,7 +19,7 @@
             Or get inspiration from a <a href="/generate/random">randomly generated name.</a>
         </div>
         <div class="col-md-4">
-          <img class="resultsimg" src="{{ $returnimg }}">
+          <img class="resultsimg" src="/images/{{ $returnimg }}" alt="characterimg">
         </div>
       </div>
     @else
@@ -30,7 +30,7 @@
           Or, try the <a href="/">personalized name generator.</a>
         </div>
         <div class="col-md-4">
-          <img class="resultsimg" src="{{ $returnimg }}">
+          <img class="resultsimg" src="/images/{{ $returnimg }}" alt="characterimg">
         </div>
       </div>
     @endif
