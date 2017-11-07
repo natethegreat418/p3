@@ -24,28 +24,9 @@ class GenerateNameController extends Controller
       $inputrace = $request->input('charrace');
       $inputgender = $request->input('chargender');
 
-
-      // Fetch and initial trim of firstname options
-      $firstnamejson = file_get_contents(base_path().'/database/character_firstname11.6.17.json');
-      $firstnamearray = json_decode($firstnamejson, true);
-      $relevantfirstnames = [];
-
-      foreach ($firstnamearray as $entry) {
-        if($entry['Race'] == $inputrace && $entry['Gender'] == $inputgender) {
-          array_push($relevantfirstnames, $entry);
-        }
-      }
-
-      // Fetch and initial trim of lastname options
-      $lastnamejson = file_get_contents(base_path().'/database/character_lastname11.6.17.json');
-      $lastnamearray = json_decode($lastnamejson, true);
-      $relevantlastnames = [];
-
-      foreach ($lastnamearray as $entry) {
-        if($entry['Race'] == $inputrace) {
-          array_push($relevantlastnames, $entry);
-        }
-      }
+      // Fetch relevant name lists
+      $relevantfirstnames = $this->trimfnamelist($inputrace, $inputgender);
+      $relevantlastnames = $this->trimlnamelist($inputrace, $inputgender);
 
       // Determine best match for firstname
       $splitfname = str_split($inputfname);
@@ -107,6 +88,125 @@ class GenerateNameController extends Controller
         return redirect('/')->withErrors($custom_errors);
       }
 
+      // Retrieve appropriate img value
+      $charimg = $this->getimg($inputrace, $inputgender);
+
+      // Best name match found, hit redirect
+      $charname = $best_fname . ' ' . $best_lname;
+
+      return redirect('/generate/personalized')->with([
+        'inputname' => $inputname,
+        'inputrace' => $inputrace,
+        'inputgender' => $inputgender,
+        'charname' => $charname,
+        'returnimg' => $charimg,
+        'ranked_fnamelist'=> $rankedfirstnames,
+        'ranked_lnamelist'=> $rankedlastnames,
+        'requesttype' => $requesttype
+      ]);
+    }
+
+    // This method handles random name generation option
+    public function random(Request $request)
+    {
+      $requesttype = 'random';
+
+      // Randomly assign character race and gender
+      $raceoptions = [
+          1 => 'Human',
+          2 => 'Dwarf',
+          3 => 'Elf',
+      ];
+
+      $rand_key_race = array_rand($raceoptions, 1);
+      $inputrace = $raceoptions[$rand_key_race];
+
+      $genderoptions = [
+        1 => 'Male',
+        2 => 'Female',
+      ];
+
+      $rand_key_gender = array_rand($genderoptions, 1);
+      $inputgender = $genderoptions[$rand_key_gender];
+
+      // Fetch relevant name lists
+      $relevantfirstnames = $this->trimfnamelist($inputrace, $inputgender);
+      $relevantlastnames = $this->trimlnamelist($inputrace, $inputgender);
+
+      // Select random positions from first name options
+      $rand_keys_firstn = array_rand($relevantfirstnames, 1);
+      $firstname = $relevantfirstnames[$rand_keys_firstn]['Firstname'];
+
+      // Select random positions from last name options
+      $rand_keys_lastn = array_rand($relevantlastnames, 1);
+      $lastname = $relevantlastnames[$rand_keys_lastn]['Lastname'];
+
+      // Get concatenated name
+      $charname = $firstname . ' ' . $lastname;
+
+      // Retrieve appropriate img file
+      $charimg = $this->getimg($inputrace, $inputgender);
+
+      return view('results')->with([
+        'charname' => $charname,
+        'chargender' => $inputgender,
+        'charrace' => $inputrace,
+        'returnimg' => $charimg,
+        'requesttype' => $requesttype
+
+      ]);
+    }
+
+    // This method redirects to the results page and passes the personalized results as session data
+    public function index()
+    {
+      return view('results')->with([
+        'charname' => session('charname'),
+        'inputname' => session('inputname'),
+        'inputrace' => session('inputrace'),
+        'inputgender' => session('inputgender'),
+        'returnimg' => session('returnimg'),
+        'ranked_fnamelist' => session('ranked_fnamelist'),
+        'ranked_lnamelist' => session('ranked_lnamelist'),
+        'requesttype' => session('requesttype')
+      ]);
+    }
+
+    // This method fetchs the entire first name list and trims it to match the request variables
+    public function trimfnamelist($inputrace, $inputgender)
+    {
+      // Fetch and initial trim of firstname options
+      $firstnamejson = file_get_contents(base_path().'/database/character_firstname11.6.17.json');
+      $firstnamearray = json_decode($firstnamejson, true);
+      $relevantfirstnames = [];
+
+      foreach ($firstnamearray as $entry) {
+        if($entry['Race'] == $inputrace && $entry['Gender'] == $inputgender) {
+          array_push($relevantfirstnames, $entry);
+        }
+      }
+      return $relevantfirstnames;
+    }
+
+    // This method fetchs the entire last name list and trims it to match the request variables
+    public function trimlnamelist($inputrace, $inputgender)
+    {
+      // Fetch and initial trim of lastname options
+      $lastnamejson = file_get_contents(base_path().'/database/character_lastname11.6.17.json');
+      $lastnamearray = json_decode($lastnamejson, true);
+      $relevantlastnames = [];
+
+      foreach ($lastnamearray as $entry) {
+        if($entry['Race'] == $inputrace) {
+          array_push($relevantlastnames, $entry);
+        }
+      }
+      return $relevantlastnames;
+    }
+
+    // This method returns the appropriate img content based on the request input
+    public function getimg($inputrace, $inputgender)
+    {
       // Select appropriate img file
       if ($inputrace === 'Human' && $inputgender === 'Male'){
         //https://www.dandwiki.com/w/images/a/ad/Cyrus.jpg
@@ -125,140 +225,15 @@ class GenerateNameController extends Controller
         //https://media-waterdeep.cursecdn.com/avatars/thumbnails/7/639/420/618/636287075350739045.png
         $charimg = 'elf f-min.png';
       }
-      elseif($randomrace === 'Dwarf' && $randomgender === 'Male')
+      elseif($inputrace === 'Dwarf' && $inputgender === 'Male')
       {
         //https://i.pinimg.com/originals/18/d2/6b/18d26b5ca8e7de4082be1ce23f16f840.png
         $charimg = 'dwarf m-min.png';
       }
-      elseif($randomrace === 'Dwarf' && $randomgender === 'Female'){
+      elseif($inputrace === 'Dwarf' && $inputgender === 'Female'){
         //https://i.pinimg.com/736x/06/65/d9/0665d980a61b1014e530df9c8e65ed08--female-dwarf-players-handbook.jpg
         $charimg = 'dwarf f-min.jpg';
       }
-
-      // Best name match found, hit redirect
-      $charname = $best_fname . ' ' . $best_lname;
-
-      return redirect('/generate/personalized')->with([
-        'inputname' => $inputname,
-        'inputrace' => $inputrace,
-        'inputgender' => $inputgender,
-        'charname' => $charname,
-        'returnimg' => $charimg,
-        'ranked_fnamelist'=> $rankedfirstnames,
-        'ranked_lnamelist'=> $rankedlastnames,
-        'requesttype' => $requesttype
-      ]);
+      return $charimg;
     }
-
-    // This method redirects to the results page and passes the results as session data
-    public function index()
-    {
-      return view('results')->with([
-        'charname' => session('charname'),
-        'inputname' => session('inputname'),
-        'inputrace' => session('inputrace'),
-        'inputgender' => session('inputgender'),
-        'returnimg' => session('returnimg'),
-        'ranked_fnamelist' => session('ranked_fnamelist'),
-        'ranked_lnamelist' => session('ranked_lnamelist'),
-        'requesttype' => session('requesttype')
-      ]);
-    }
-
-    // This method handles random name generation option
-    public function random(Request $request)
-    {
-      $requesttype = 'random';
-
-      // Randomly assign character race and gender
-      $raceoptions = [
-          1 => 'Human',
-          2 => 'Dwarf',
-          3 => 'Elf',
-      ];
-
-      $rand_key_race = array_rand($raceoptions, 1);
-      $randomrace = $raceoptions[$rand_key_race];
-
-      $genderoptions = [
-        1 => 'Male',
-        2 => 'Female',
-      ];
-
-      $rand_key_gender = array_rand($genderoptions, 1);
-      $randomgender = $genderoptions[$rand_key_gender];
-
-      // Fetch name options and convert to arrays
-      $firstnamejson = file_get_contents(base_path().'/database/character_firstname11.6.17.json');
-      $firstnamearray = json_decode($firstnamejson, true);
-      $lastnamejson = file_get_contents(base_path().'/database/character_lastname11.6.17.json');
-      $lastnamearray = json_decode($lastnamejson, true);
-
-      // Initial trim of firstname options
-      $relevantfirstnames = [];
-
-      foreach ($firstnamearray as $entry) {
-        if($entry['Race'] == $randomrace && $entry['Gender'] == $randomgender) {
-          array_push($relevantfirstnames, $entry);
-        }
-      }
-
-      // Initial trim of lastname options
-      $relevantlastnames = [];
-
-      foreach ($lastnamearray as $entry) {
-        if($entry['Race'] == $randomrace) {
-          array_push($relevantlastnames, $entry);
-        }
-      }
-
-      // Select random positions from first name options
-      $rand_keys_firstn = array_rand($relevantfirstnames, 1);
-      $firstname = $relevantfirstnames[$rand_keys_firstn]['Firstname'];
-
-      // Select random positions from last name options
-      $rand_keys_lastn = array_rand($relevantlastnames, 1);
-      $lastname = $relevantlastnames[$rand_keys_lastn]['Lastname'];
-
-      // Return concatenated name to results
-      $charname = $firstname . ' ' . $lastname;
-
-      // Select appropriate img file
-      if ($randomrace === 'Human' && $randomgender === 'Male'){
-        //https://www.dandwiki.com/w/images/a/ad/Cyrus.jpg
-        $charimg = 'human m-min.jpg';
-      }
-      elseif($randomrace === 'Human' && $randomgender === 'Female'){
-        //https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/258/420/618/636271801914013762.png
-        $charimg = 'human f-min.png';
-      }
-      elseif($randomrace === 'Elf' && $randomgender === 'Male')
-      {
-        //http://www.mascotdesigngallery.com/wp/wp-content/uploads/2014/09/jimnelsonart.blogspot-elf-bard.jpg
-        $charimg = 'elf m-min.jpg';
-      }
-      elseif($randomrace === 'Elf' && $randomgender === 'Female'){
-        //https://media-waterdeep.cursecdn.com/avatars/thumbnails/7/639/420/618/636287075350739045.png
-        $charimg = 'elf f-min.png';
-      }
-      elseif($randomrace === 'Dwarf' && $randomgender === 'Male')
-      {
-        //https://i.pinimg.com/originals/18/d2/6b/18d26b5ca8e7de4082be1ce23f16f840.png
-        $charimg = 'dwarf m-min.png';
-      }
-      elseif($randomrace === 'Dwarf' && $randomgender === 'Female'){
-        //https://i.pinimg.com/736x/06/65/d9/0665d980a61b1014e530df9c8e65ed08--female-dwarf-players-handbook.jpg
-        $charimg = 'dwarf f-min.jpg';
-      }
-
-      return view('results')->with([
-        'charname' => $charname,
-        'chargender' => $randomgender,
-        'charrace' => $randomrace,
-        'returnimg' => $charimg,
-        'requesttype' => $requesttype
-
-      ]);
-    }
-
 }
