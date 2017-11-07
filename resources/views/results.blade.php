@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-md-4">
           <h2>I dub thee... </h2><br><h1> {{ $charname }}</h1>
-            Don't like the results? <a href="/">Try again!</a></br>
+            Don't like the results? <a href="/">Try again!</a><br>
             Or get inspiration from a <a href="/generate/random">randomly generated name.</a>
         </div>
         <div class="col-md-4">
@@ -25,8 +25,8 @@
     @else
       <div class="row">
         <div class="col-md-4">
-          <h2>The Orb has selected... </h2></br><h1> a {{$chargender}} {{ $charrace }} </br> named {{ $charname }}</h1>
-          Don't like the results? <a href="/generate/random">Get a new random name!</a></br>
+          <h2>The Orb has selected... </h2><br><h1> a {{$chargender}} {{ $charrace }} <br> named {{ $charname }}</h1>
+          Don't like the results? <a href="/generate/random">Get a new random name!</a><br>
           Or, try the <a href="/">personalized name generator.</a>
         </div>
         <div class="col-md-4">

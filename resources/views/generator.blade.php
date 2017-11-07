@@ -65,8 +65,7 @@
         </div>
         <div class="form-group">
           <label>What race is your character?</label>
-          <select size="1" class="form-control" name="charrace" required>
-            <option><option>
+          <select size="3" class="form-control" name="charrace" required>
             <option value="Elf">Elf</option>
             <option value="Dwarf">Dwarf</option>
             <option value="Human">Human</option>
